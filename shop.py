@@ -1,7 +1,5 @@
 # shopping_cart.py
 
-#from pprint import pprint
-
 products = [
     {"id":1, "name": "Chocolate Sandwich Cookies", "department": "snacks", "aisle": "cookies cakes", "price": 3.50},
     {"id":2, "name": "All-Seasons Salt", "department": "pantry", "aisle": "spices seasonings", "price": 4.99},
@@ -25,15 +23,8 @@ products = [
     {"id":20, "name": "Pomegranate Cranberry & Aloe Vera Enrich Drink", "department": "beverages", "aisle": "juice nectars", "price": 4.25}
 ] # based on data from Instacart: https://www.instacart.com/datasets/grocery-shopping-2017
 
-p = input("Please enter a product number, or DONE if there are no more items: ")
+selected_id = input("Please input a product identifier: ")
+print(selected_id)
+print(type(selected_id))
 
-# TODO: write some Python code here to produce the desired output
-while p != 'DONE': 
-    p = input("Please enter a product number, or DONE if there are no more items: ")
-    if p == 'DONE':
-        print("yeet. you done")
-    if p != '1' or p != '2' or p != '3':
-        print("Please enter a valid grocery id!")
-        print(" ")
-        p = input("Please enter a product number, or DONE if there are no more items: ")
 
