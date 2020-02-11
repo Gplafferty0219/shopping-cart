@@ -27,18 +27,24 @@ products = [
 
 #inputs
 total_price = 0 
-selected_ids = []
-ids= ["1","2","3","4","5","6","7","8","9","10","11","12","13","14","15","16","17","18","19","20"]
+selected_ids = [] #empty list user will be adding to
+ids= ["1","2","3","4","5","6","7","8","9","10","11","12","13","14","15","16","17","18","19","20"] #to make it easier to validate id's
+
+#a little welcome message
+print("~~~~~~~Welcome to Groceries R Us~~~~~~~")
+print("When you are ready, proceed below!")
+print()
 
 #loop the input message and add each input to my empty list
 while True: 
     selected_id = input("Please enter a product identifier, or type 'DONE' if there are no more items: ")
     if selected_id == "DONE":
+        #little something special I added... makes user confirm their list before checking out!
         print("Your List: ")
         for selected_id in selected_ids:
             matching_products = [p for p in products if str(p["id"]) == str(selected_id)]
             matching_product = matching_products[0]
-            print("   " + matching_product["name"])
+            print("   " + matching_product["name"])            
         list_validation = input("Confirmation: Are you finished? (y/n): ")
         if list_validation == "n":
             print("ADD YOUR REMAINING ITEMS!")
@@ -47,6 +53,7 @@ while True:
         else:
             print("INVALID RESPONSE: PLEASE ONLY ENTER 'y' or 'n'")
             print("Type 'DONE' and proceed")
+    #will add to my empty list as long as a valid input is detected
     elif selected_id in ids:
         selected_ids.append(selected_id)
     else:
