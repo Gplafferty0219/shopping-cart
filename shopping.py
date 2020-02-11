@@ -34,11 +34,24 @@ ids= ["1","2","3","4","5","6","7","8","9","10","11","12","13","14","15","16","17
 while True: 
     selected_id = input("Please enter a product identifier, or type 'DONE' if there are no more items: ")
     if selected_id == "DONE":
-        break
+        print("Your List: ")
+        for selected_id in selected_ids:
+            matching_products = [p for p in products if str(p["id"]) == str(selected_id)]
+            matching_product = matching_products[0]
+            print("   " + matching_product["name"])
+        list_validation = input("Confirmation: Are you finished? (y/n): ")
+        if list_validation == "n":
+            print("ADD YOUR REMAINING ITEMS!")
+        elif list_validation == "y":
+            break
+        else:
+            print("INVALID RESPONSE: PLEASE ONLY ENTER 'y' or 'n'")
+            print("Type 'DONE' and proceed")
     elif selected_id in ids:
         selected_ids.append(selected_id)
     else:
         print("Please enter a valid product identifier!")
+
 
 #reciept starts here
 #store info here
