@@ -52,7 +52,7 @@ while True:
             break
         else:
             print("INVALID RESPONSE: PLEASE ONLY ENTER 'y' or 'n'")
-            print("Type 'DONE' and proceed")
+            print("Type 'DONE' to proceed")
     #will add to my empty list as long as a valid input is detected
     elif selected_id in ids:
         selected_ids.append(selected_id)
