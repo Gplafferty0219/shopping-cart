@@ -1,5 +1,6 @@
-# shopping_cart.py
-
+#shopping.py
+from pprint import pprint
+import datetime
 
 products = [
     {"id":1, "name": "Chocolate Sandwich Cookies", "department": "snacks", "aisle": "cookies cakes", "price": 3.50},
@@ -24,12 +25,63 @@ products = [
     {"id":20, "name": "Pomegranate Cranberry & Aloe Vera Enrich Drink", "department": "beverages", "aisle": "juice nectars", "price": 4.25}
 ] # based on data from Instacart: https://www.instacart.com/datasets/grocery-shopping-2017
 
-while True:
-    selected_id = input("Please input a product identifier: ")
+#inputs
+total_price = 0 
+selected_ids = []
+ids= ["1","2","3","4","5","6","7","8","9","10","11","12","13","14","15","16","17","18","19","20"]
+
+#loop the input message and add each input to my empty list
+while True: 
+    selected_id = input("Please enter a product identifier, or type 'DONE' if there are no more items: ")
     if selected_id == "DONE":
         break
+    elif selected_id in ids:
+        selected_ids.append(selected_id)
     else:
-        matching_products = (p for p in products if str(p("id")) == str(selected_id))
-        matching_product = matching_products(0)
-        print["SELECTED PRODUCT: " + matching_product("name") + " " + str(matching_product("price"))]
+        print("Please enter a valid product identifier!")
+
+#reciept starts here
+#store info here
+print("------------------------------------------")
+print("              Groceries R Us              ")
+print("        phone number: 215-485-1218        ")
+print("           wwww.GroceriesRUs.com          ")
+print("------------------------------------------")
+
+#date and time are here
+today = datetime.datetime.today()
+print("               Checkout at:               ")
+print("          ", today.strftime("%Y-%m-%d %I:%M %p"), "          ")
+
+print("------------------------------------------")
+
+#shopping cart items here (the output of your code)
+print("Selected Products:")
+for selected_id in selected_ids:
+    matching_products = [p for p in products if str(p["id"]) == str(selected_id)]
+    matching_product = matching_products[0]
+    total_price = total_price + matching_product["price"]
+    print(" + " + matching_product["name"] + " ($" + str(format(matching_product["price"], ",.2f")) + ")")
+
+print("------------------------------------------")
+
+
+#subtotal, sales tax, final total
+tax = 0.0875
+sales_tax = total_price * tax
+total = total_price + sales_tax
+
+#print total
+print("SUBTOTAL: $", format(total_price, ",.2f"))
+print("SALES TAX (8.75%): $", format(sales_tax, ",.2f"))
+print(" ")
+print("TOTAL: $", format(total, ",.2f"))
+
+print("------------------------------------------")
+
+# thank you message
+print("Thanks for shopping with us! Enjoy your food and stuff!")
+
+
+
 
