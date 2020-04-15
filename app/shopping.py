@@ -2,11 +2,18 @@
 from pprint import pprint
 import datetime
 
+#set up the tax variable
 tax = 0.0875
 
 #setting a formatting variable
 def to_usd(my_price):
     return "${0:,.2f}".format(my_price)
+
+#assigining variable to find my products
+def find_product(product_id, all_products):
+    matching_products = [p for p in all_products if str(p["id"]) == str(product_id)]
+    matching_product = matching_products[0]
+    return matching_product
 
 if __name__ == "__main__":
 
@@ -86,11 +93,10 @@ if __name__ == "__main__":
     #shopping cart items here (the output of your code)
     print("Selected Products:")
     for selected_id in selected_ids:
-        matching_products = [p for p in products if str(p["id"]) == str(selected_id)]
-        matching_product = matching_products[0]
+        #matching_product = matching_products[0]
+        matching_product = find_product(selected_id, products)
         total_price = total_price + matching_product["price"]
         print("- " + matching_product["name"] + " (" + to_usd(matching_product["price"]) + ")")
-
     print("------------------------------------------")
 
 
