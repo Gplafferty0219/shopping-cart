@@ -2,6 +2,10 @@
 from pprint import pprint
 import datetime
 
+#setting a formatting variable
+def to_usd(my_price):
+    return "${0:,.2f}".format(my_price)
+
 products = [
     {"id":1, "name": "Chocolate Sandwich Cookies", "department": "snacks", "aisle": "cookies cakes", "price": 3.50},
     {"id":2, "name": "All-Seasons Salt", "department": "pantry", "aisle": "spices seasonings", "price": 4.99},
@@ -81,7 +85,7 @@ for selected_id in selected_ids:
     matching_products = [p for p in products if str(p["id"]) == str(selected_id)]
     matching_product = matching_products[0]
     total_price = total_price + matching_product["price"]
-    print(" + " + matching_product["name"] + " ($" + str(format(matching_product["price"], ",.2f")) + ")")
+    print("- " + matching_product["name"] + " (" + to_usd(matching_product["price"]) + ")")
 
 print("------------------------------------------")
 
@@ -92,16 +96,17 @@ sales_tax = total_price * tax
 total = total_price + sales_tax
 
 #print total
-print("SUBTOTAL: $", format(total_price, ",.2f"))
-print("SALES TAX (8.75%): $", format(sales_tax, ",.2f"))
+#print("SUBTOTAL: $", format(total_price, ",.2f"))
+#print("SALES TAX (8.75%): $", format(sales_tax, ",.2f"))
+#print(" ")
+#print("TOTAL: $", format(total, ",.2f"))
+print("SUBTOTAL: " + to_usd(total_price))
+print("TAX: " + to_usd(sales_tax))
 print(" ")
-print("TOTAL: $", format(total, ",.2f"))
-
+print("TOTAL: " + to_usd(total))
 print("------------------------------------------")
 
 # thank you message
 print("Thanks for shopping with us! Enjoy your food and stuff!")
-
-
 
 
