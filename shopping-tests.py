@@ -1,6 +1,6 @@
 import pytest # for pytest.raises (see: https://docs.pytest.org/en/latest/assert.html)
 
-from shopping import tax, to_usd, find_product
+from app.shopping import tax, to_usd
 
 def test_tax_rate():
     assert(tax) == 0.0875
@@ -17,18 +17,3 @@ def test_to_usd():
 
     # it should display thousands separators
     assert to_usd(1234567890.5555555) == "$1,234,567,890.56"
-
-def test_find_product():
-    products = [
-        {"id":1, "name": "Chocolate Sandwich Cookies", "department": "snacks", "aisle": "cookies cakes", "price": 3.50},
-        {"id":3, "name": "Robust Golden Unsweetened Oolong Tea", "department": "beverages", "aisle": "tea", "price": 2.49},
-        {"id":2, "name": "All-Seasons Salt", "department": "pantry", "aisle": "spices seasonings", "price": 4.99},
-    ]
-
-    # if there is a match, it should find and return a product
-    matching_product = find_product("2", products)
-    assert matching_product["name"] == "All-Seasons Salt"
-
-    # if there is no match, it should raise an IndexError
-    with pytest.raises(IndexError):
-        find_product("2222", products)
