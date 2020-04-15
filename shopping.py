@@ -6,6 +6,7 @@ import datetime
 def to_usd(my_price):
     return "${0:,.2f}".format(my_price)
 
+
 products = [
     {"id":1, "name": "Chocolate Sandwich Cookies", "department": "snacks", "aisle": "cookies cakes", "price": 3.50},
     {"id":2, "name": "All-Seasons Salt", "department": "pantry", "aisle": "spices seasonings", "price": 4.99},
@@ -96,10 +97,6 @@ sales_tax = total_price * tax
 total = total_price + sales_tax
 
 #print total
-#print("SUBTOTAL: $", format(total_price, ",.2f"))
-#print("SALES TAX (8.75%): $", format(sales_tax, ",.2f"))
-#print(" ")
-#print("TOTAL: $", format(total, ",.2f"))
 print("SUBTOTAL: " + to_usd(total_price))
 print("TAX: " + to_usd(sales_tax))
 print(" ")
